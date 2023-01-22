@@ -100,6 +100,7 @@
 		B9F2792B297CC4BF00D2D0D9 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27921297CC03C00D2D0D9 /* Point.swift */; };
 		B9F2792C297CC4BF00D2D0D9 /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27923297CC03C00D2D0D9 /* Point3D.swift */; };
 		B9F2792D297CC4BF00D2D0D9 /* ElfCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27922297CC03C00D2D0D9 /* ElfCode.swift */; };
+		B9F27932297D16D500D2D0D9 /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = B9F27931297D16D500D2D0D9 /* Crypto */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B93F1B6E293C0F5F008D5BD1 /* Algorithms in Frameworks */,
+				B9F27932297D16D500D2D0D9 /* Crypto in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +649,7 @@
 			name = AdventOfCodeKit;
 			packageProductDependencies = (
 				B93F1B6D293C0F5F008D5BD1 /* Algorithms */,
+				B9F27931297D16D500D2D0D9 /* Crypto */,
 			);
 			productName = AdventOfCodeKit;
 			productReference = B93F1B36293C0BC2008D5BD1 /* AdventOfCodeKit.framework */;
@@ -702,6 +705,7 @@
 			mainGroup = B93AB205291C2A130032E7E9;
 			packageReferences = (
 				B93F1B6C293C0F5F008D5BD1 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				B9F2792E297D15AA00D2D0D9 /* XCRemoteSwiftPackageReference "swift-crypto" */,
 			);
 			productRefGroup = B93AB20F291C2A130032E7E9 /* Products */;
 			projectDirPath = "";
@@ -1165,6 +1169,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		B9F2792E297D15AA00D2D0D9 /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-crypto.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1172,6 +1184,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B93F1B6C293C0F5F008D5BD1 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		B9F27931297D16D500D2D0D9 /* Crypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9F2792E297D15AA00D2D0D9 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = Crypto;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
