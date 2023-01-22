@@ -10,7 +10,8 @@ import AppKit
 
 let inputBaseUrl = FileManager.default.homeDirectoryForCurrentUser
     .appendingPathComponent("Documents", isDirectory: true)
-    .appendingPathComponent("AdventOfCode", isDirectory: true)
+    .appendingPathComponent("Advent Of Code", isDirectory: true)
+    .appendingPathComponent("2016", isDirectory: true)
 
 func inputUrl(for day: String) -> URL {
     return inputBaseUrl
@@ -33,7 +34,7 @@ func downloadInput(for day: String, year: String, cookie: String) async -> Strin
     }
     let string = String(data: response.0, encoding: .utf8)
     
-    try? string?.write(to: inputUrl(for: day), atomically: true, encoding: .utf8)
+    try! string?.write(to: inputUrl(for: day), atomically: true, encoding: .utf8)
     return string
 }
 
