@@ -45,3 +45,9 @@ extension Comparable {
         min(max(self, limits.lowerBound), limits.upperBound)
     }
 }
+
+extension ArraySlice {
+    subscript(n n: Int) -> Element {
+        self[index(startIndex, offsetBy: n)]
+    }
+}
