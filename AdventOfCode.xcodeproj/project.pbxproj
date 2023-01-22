@@ -90,6 +90,16 @@
 		B93F1BB5293C12EA008D5BD1 /* Day25.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93AB244291D93160032E7E9 /* Day25.swift */; };
 		B93F1BB6293C12EA008D5BD1 /* Day25.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93AB244291D93160032E7E9 /* Day25.swift */; };
 		B93F1BB7293C12ED008D5BD1 /* Day25Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93AB246291D93160032E7E9 /* Day25Tests.swift */; };
+		B9F27924297CC03C00D2D0D9 /* AStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2791F297CC03C00D2D0D9 /* AStar.swift */; };
+		B9F27925297CC03C00D2D0D9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27920297CC03C00D2D0D9 /* Extensions.swift */; };
+		B9F27926297CC03C00D2D0D9 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27921297CC03C00D2D0D9 /* Point.swift */; };
+		B9F27927297CC03C00D2D0D9 /* ElfCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27922297CC03C00D2D0D9 /* ElfCode.swift */; };
+		B9F27928297CC03C00D2D0D9 /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27923297CC03C00D2D0D9 /* Point3D.swift */; };
+		B9F27929297CC4BF00D2D0D9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27920297CC03C00D2D0D9 /* Extensions.swift */; };
+		B9F2792A297CC4BF00D2D0D9 /* AStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2791F297CC03C00D2D0D9 /* AStar.swift */; };
+		B9F2792B297CC4BF00D2D0D9 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27921297CC03C00D2D0D9 /* Point.swift */; };
+		B9F2792C297CC4BF00D2D0D9 /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27923297CC03C00D2D0D9 /* Point3D.swift */; };
+		B9F2792D297CC4BF00D2D0D9 /* ElfCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27922297CC03C00D2D0D9 /* ElfCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +227,11 @@
 		B93F1B60293C0C9E008D5BD1 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		B9584841295B716700B2A37C /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		B9584842295B7F6200B2A37C /* Secrets.example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.example.xcconfig; sourceTree = "<group>"; };
+		B9F2791F297CC03C00D2D0D9 /* AStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AStar.swift; sourceTree = "<group>"; };
+		B9F27920297CC03C00D2D0D9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B9F27921297CC03C00D2D0D9 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		B9F27922297CC03C00D2D0D9 /* ElfCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElfCode.swift; sourceTree = "<group>"; };
+		B9F27923297CC03C00D2D0D9 /* Point3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point3D.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +268,7 @@
 				B93AB22E291C3A260032E7E9 /* AdventOfCode.xctestplan */,
 				B93AB210291C2A130032E7E9 /* AdventOfCode */,
 				B93F1B37293C0BC2008D5BD1 /* AdventOfCodeKit */,
+				B9F2791E297CC03C00D2D0D9 /* Helpers */,
 				B93AB218291C2CB90032E7E9 /* Day1 */,
 				B93AB26B291D93170032E7E9 /* Day2 */,
 				B93AB233291D93160032E7E9 /* Day3 */,
@@ -569,6 +585,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B9F2791E297CC03C00D2D0D9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B9F2791F297CC03C00D2D0D9 /* AStar.swift */,
+				B9F27920297CC03C00D2D0D9 /* Extensions.swift */,
+				B9F27921297CC03C00D2D0D9 /* Point.swift */,
+				B9F27922297CC03C00D2D0D9 /* ElfCode.swift */,
+				B9F27923297CC03C00D2D0D9 /* Point3D.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -723,12 +751,15 @@
 				B93F1BAC293C12D0008D5BD1 /* Day22.swift in Sources */,
 				B93F1B6F293C1219008D5BD1 /* Day2.swift in Sources */,
 				B93F1B88293C1276008D5BD1 /* Day10.swift in Sources */,
+				B9F27925297CC03C00D2D0D9 /* Extensions.swift in Sources */,
 				B93F1B8B293C127D008D5BD1 /* Day11.swift in Sources */,
+				B9F27928297CC03C00D2D0D9 /* Point3D.swift in Sources */,
 				B93F1B8E293C1284008D5BD1 /* Day12.swift in Sources */,
 				B93F1B82293C1268008D5BD1 /* Day8.swift in Sources */,
 				B93F1B97293C129F008D5BD1 /* Day15.swift in Sources */,
 				B93F1B94293C1292008D5BD1 /* Day14.swift in Sources */,
 				B93F1B4B293C0BCC008D5BD1 /* Day1.swift in Sources */,
+				B9F27927297CC03C00D2D0D9 /* ElfCode.swift in Sources */,
 				B93F1B57293C0C42008D5BD1 /* Day.swift in Sources */,
 				B93F1B78293C1248008D5BD1 /* Day5.swift in Sources */,
 				B93F1BA7293C12C3008D5BD1 /* Day20.swift in Sources */,
@@ -737,9 +768,11 @@
 				B93F1B72293C1227008D5BD1 /* Day3.swift in Sources */,
 				B93F1B85293C126F008D5BD1 /* Day9.swift in Sources */,
 				B93F1B9A293C12A5008D5BD1 /* Day16.swift in Sources */,
+				B9F27924297CC03C00D2D0D9 /* AStar.swift in Sources */,
 				B93F1B75293C1241008D5BD1 /* Day4.swift in Sources */,
 				B93F1BA0293C12B4008D5BD1 /* Day18.swift in Sources */,
 				B93F1B7E293C1258008D5BD1 /* Day7.swift in Sources */,
+				B9F27926297CC03C00D2D0D9 /* Point.swift in Sources */,
 				B93F1B9D293C12AD008D5BD1 /* Day17.swift in Sources */,
 				B93F1BA9293C12CA008D5BD1 /* Day21.swift in Sources */,
 				B93F1BA3293C12BC008D5BD1 /* Day19.swift in Sources */,
@@ -760,6 +793,7 @@
 				B93F1B4C293C0BCC008D5BD1 /* Day1.swift in Sources */,
 				B93F1B9E293C12AD008D5BD1 /* Day17.swift in Sources */,
 				B93F1B76293C1241008D5BD1 /* Day4.swift in Sources */,
+				B9F2792C297CC4BF00D2D0D9 /* Point3D.swift in Sources */,
 				B93F1BA8293C12C6008D5BD1 /* Day20Tests.swift in Sources */,
 				B93F1B8F293C1284008D5BD1 /* Day12.swift in Sources */,
 				B93F1B70293C1219008D5BD1 /* Day2.swift in Sources */,
@@ -777,6 +811,7 @@
 				B93F1B93293C128E008D5BD1 /* Day13Tests.swift in Sources */,
 				B93F1B7F293C1259008D5BD1 /* Day7.swift in Sources */,
 				B93F1B90293C1287008D5BD1 /* Day12Tests.swift in Sources */,
+				B9F2792A297CC4BF00D2D0D9 /* AStar.swift in Sources */,
 				B93F1B71293C1222008D5BD1 /* Day2Tests.swift in Sources */,
 				B93F1BB7293C12ED008D5BD1 /* Day25Tests.swift in Sources */,
 				B93F1BB3293C12E1008D5BD1 /* Day24.swift in Sources */,
@@ -790,6 +825,7 @@
 				B93F1BAD293C12D1008D5BD1 /* Day22.swift in Sources */,
 				B93F1B4D293C0BD2008D5BD1 /* Day1Tests.swift in Sources */,
 				B93F1BA1293C12B5008D5BD1 /* Day18.swift in Sources */,
+				B9F2792D297CC4BF00D2D0D9 /* ElfCode.swift in Sources */,
 				B93F1B89293C1277008D5BD1 /* Day10.swift in Sources */,
 				B93F1B92293C128B008D5BD1 /* Day13.swift in Sources */,
 				B93F1B81293C1261008D5BD1 /* Day.swift in Sources */,
@@ -797,7 +833,9 @@
 				B93F1BA6293C12C3008D5BD1 /* Day20.swift in Sources */,
 				B93F1B83293C1269008D5BD1 /* Day8.swift in Sources */,
 				B93F1B9B293C12A6008D5BD1 /* Day16.swift in Sources */,
+				B9F27929297CC4BF00D2D0D9 /* Extensions.swift in Sources */,
 				B93F1B73293C1227008D5BD1 /* Day3.swift in Sources */,
+				B9F2792B297CC4BF00D2D0D9 /* Point.swift in Sources */,
 				B93F1BB0293C12D9008D5BD1 /* Day23.swift in Sources */,
 				B93F1B9F293C12B0008D5BD1 /* Day17Tests.swift in Sources */,
 				B93F1B84293C126B008D5BD1 /* Day8Tests.swift in Sources */,
