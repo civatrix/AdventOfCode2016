@@ -11,12 +11,20 @@ final class Day1: Day {
     func run(input: String) -> String {
         let instructions = input.matches(of: /([RL])(\d+)/).map { $0.output }
         
+        var visited = Set<Point>([.zero])
         var point = Point.zero
         var direction = Point.up
-        for instruction in instructions {
-            direction = direction.rotate(clockwise: instruction.1 == "R")
-            point += direction * Int(instruction.2)!
+    outerLoop: for instruction in instructions {
+        direction = direction.rotate(clockwise: instruction.1 == "R")
+        for _ in 0 ..< Int(instruction.2)! {
+            point += direction
+            if visited.contains(point) {
+                break outerLoop
+            } else {
+                visited.insert(point)
+            }
         }
+    }
         
         return point.distance(to: .zero).description
     }
