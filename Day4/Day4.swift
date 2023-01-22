@@ -20,7 +20,7 @@ final class Day4: Day {
                     "-"
                 })
             } transform: {
-                $0.replacing("-", with: "")
+                $0.replacing("-", with: " ")
             }
             "-"
             TryCapture(as: id) {
@@ -36,13 +36,22 @@ final class Day4: Day {
         return input.lines
             .map { $0.wholeMatch(of: regex)! }
             .filter { String(sorted(byLetterFrequency: $0[name]).prefix(5)) == $0[checksum] }
-            .map { $0[id] }
-            .sum
+            .filter { line in
+                let id = line[id]
+                return String(line[name].map { rotate($0, by: id)}).contains("northpole")
+            }
+            .first![id]
             .description
     }
     
+    let a = Int(Character("a").asciiValue!)
+    func rotate(_ character: Character, by: Int) -> Character {
+        guard character != " " else { return character }
+        return Character(UnicodeScalar(UInt8(((Int(character.asciiValue!) - a + by) % 26) + a)))
+    }
+    
     func sorted(byLetterFrequency string: Substring) -> [Character] {
-        letterCounts(of: string)
+        letterCounts(of: string.replacing(" ", with: ""))
             .sorted {
                 if $0.value == $1.value {
                     return $0.key < $1.key
