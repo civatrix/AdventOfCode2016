@@ -11,27 +11,45 @@ final class Day2: Day {
     func run(input: String) -> String {
         let instructions = input.lines.map { $0.map { $0 } }
         
-        var point = Point(x: 1, y: 1)
+        let mapping: [Point: String] = [
+            [2,0]: "1",
+            [1,1]: "2",
+            [2,1]: "3",
+            [3,1]: "4",
+            [0,2]: "5",
+            [1,2]: "6",
+            [2,2]: "7",
+            [3,2]: "8",
+            [4,2]: "9",
+            [1,3]: "A",
+            [2,3]: "B",
+            [3,3]: "C",
+            [2,4]: "D",
+        ]
+        var point = Point(x: 0, y: 2)
         var output = ""
         
         for instruction in instructions {
             for step in instruction {
+                let move: Point
                 switch step {
                 case "U":
-                    point += .up
+                    move = .up
                 case "D":
-                    point += .down
+                    move = .down
                 case "L":
-                    point += .left
+                    move = .left
                 case "R":
-                    point += .right
+                    move = .right
                 default: fatalError("Unknown step \(step) in instruction \(instruction)")
                 }
                 
-                point = [point.x.clamped(to: 0 ... 2), point.y.clamped(to: 0 ... 2)]
+                if mapping[point + move] != nil {
+                    point += move
+                }
             }
             
-            output += "\((point.y * 3) + point.x + 1)"
+            output += mapping[point]!
         }
         
         return output

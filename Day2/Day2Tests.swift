@@ -18,6 +18,6 @@ RRDDD
 LURDL
 UUUUD
 """
-        XCTAssertEqual(day.run(input: input), "1985")
+        XCTAssertEqual(day.run(input: input), "5DB3")
     }
 }
