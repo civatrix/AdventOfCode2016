@@ -30,6 +30,6 @@ vrdear
 dvrsen
 enarar
 """
-        XCTAssertEqual(day.run(input: input), "easter")
+        XCTAssertEqual(day.run(input: input), "advent")
     }
 }

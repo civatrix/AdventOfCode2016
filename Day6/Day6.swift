@@ -18,6 +18,6 @@ final class Day6: Day {
             }
         }
         
-        return String(counts.map { $0.max { $0.value < $1.value }!.key })
+        return String(counts.map { $0.min { $0.value < $1.value }!.key })
     }
 }
