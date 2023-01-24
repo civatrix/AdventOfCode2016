@@ -15,7 +15,7 @@ final class Day10: Day {
     
     func run(input: String) -> String {
         var bots = [Substring: [Int]]()
-        var output = [Substring: [Int]]()
+        var output = [Substring: Int]()
         var instructions = [Substring: (low: Target, high: Target)]()
         
         for line in input.lines {
@@ -39,21 +39,17 @@ final class Day10: Day {
             let low = chips.min()!
             let high = chips.max()!
             
-            if low == 17 && high == 61 {
-                return String(bot.key)
-            }
-            
             switch instruction.low {
-            case let .output(key): output[key, default: []].append(low)
+            case let .output(key): output[key] = low
             case let .bot(key): bots[key, default: []].append(low)
             }
             
             switch instruction.high {
-            case let .output(key): output[key, default: []].append(high)
+            case let .output(key): output[key] = high
             case let .bot(key): bots[key, default: []].append(high)
             }
         }
         
-        return "not found"
+        return (output["0"]! * output["1"]! * output["2"]!).description
     }
 }
