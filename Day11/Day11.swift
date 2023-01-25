@@ -26,6 +26,8 @@ final class Day11: Day {
         
         let lines = input.lines
         var floors = [Floor](repeating: Floor(generators: [], microchips: []), count: lines.count)
+        floors[0].generators.formUnion(["elerium", "dilithium"])
+        floors[0].microchips.formUnion(["elerium", "dilithium"])
         
         for (floor, line) in lines.enumerated() {
             line.matches(of: generator).forEach { floors[floor].generators.insert($0.output.1) }
@@ -51,11 +53,11 @@ final class Day11: Day {
             }
         }
         
-        addToQueue(floors, floor: 0, move: 0)
+        queue.append((floors, floor: 0, move: 0))
         let validFloors = 0 ..< lines.count
         while let current = queue.dequeue() {
             let nextMove = current.move + 1
-            for nextFloor in [-1, 1].map({ current.floor + $0 }) where validFloors.contains(nextFloor) {
+            for nextFloor in [1, -1].map({ current.floor + $0 }) where validFloors.contains(nextFloor) {
                 // Don't move back down to empty floors
                 if (0 ... nextFloor).allSatisfy({ current.floors[$0].totalItems == 0 }) { continue }
                 
