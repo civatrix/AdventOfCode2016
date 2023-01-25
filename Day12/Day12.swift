@@ -10,6 +10,7 @@ import Foundation
 final class Day12: Day {
     func run(input: String) -> String {
         let cpu = ElfCode(input.lines)
+        cpu.registers["c"] = 1
         
         return cpu.run().description
     }
