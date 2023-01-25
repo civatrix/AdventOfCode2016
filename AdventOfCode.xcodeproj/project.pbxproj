@@ -101,6 +101,8 @@
 		B9F2792C297CC4BF00D2D0D9 /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27923297CC03C00D2D0D9 /* Point3D.swift */; };
 		B9F2792D297CC4BF00D2D0D9 /* ElfCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F27922297CC03C00D2D0D9 /* ElfCode.swift */; };
 		B9F27932297D16D500D2D0D9 /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = B9F27931297D16D500D2D0D9 /* Crypto */; };
+		B9F279342980ACC700D2D0D9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F279332980ACC700D2D0D9 /* Queue.swift */; };
+		B9F279352980B9A900D2D0D9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F279332980ACC700D2D0D9 /* Queue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +235,7 @@
 		B9F27921297CC03C00D2D0D9 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		B9F27922297CC03C00D2D0D9 /* ElfCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElfCode.swift; sourceTree = "<group>"; };
 		B9F27923297CC03C00D2D0D9 /* Point3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point3D.swift; sourceTree = "<group>"; };
+		B9F279332980ACC700D2D0D9 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -595,6 +598,7 @@
 				B9F27921297CC03C00D2D0D9 /* Point.swift */,
 				B9F27922297CC03C00D2D0D9 /* ElfCode.swift */,
 				B9F27923297CC03C00D2D0D9 /* Point3D.swift */,
+				B9F279332980ACC700D2D0D9 /* Queue.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -773,6 +777,7 @@
 				B93F1B85293C126F008D5BD1 /* Day9.swift in Sources */,
 				B93F1B9A293C12A5008D5BD1 /* Day16.swift in Sources */,
 				B9F27924297CC03C00D2D0D9 /* AStar.swift in Sources */,
+				B9F279342980ACC700D2D0D9 /* Queue.swift in Sources */,
 				B93F1B75293C1241008D5BD1 /* Day4.swift in Sources */,
 				B93F1BA0293C12B4008D5BD1 /* Day18.swift in Sources */,
 				B93F1B7E293C1258008D5BD1 /* Day7.swift in Sources */,
@@ -809,6 +814,7 @@
 				B93F1B9C293C12A9008D5BD1 /* Day16Tests.swift in Sources */,
 				B93F1B79293C1249008D5BD1 /* Day5.swift in Sources */,
 				B93F1B74293C122A008D5BD1 /* Day3Tests.swift in Sources */,
+				B9F279352980B9A900D2D0D9 /* Queue.swift in Sources */,
 				B93F1BB6293C12EA008D5BD1 /* Day25.swift in Sources */,
 				B93F1B7D293C1253008D5BD1 /* Day6Tests.swift in Sources */,
 				B93F1B86293C126F008D5BD1 /* Day9.swift in Sources */,
