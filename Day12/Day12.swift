@@ -9,6 +9,8 @@ import Foundation
 
 final class Day12: Day {
     func run(input: String) -> String {
-        return ""
+        let cpu = ElfCode(input.lines)
+        
+        return cpu.run().description
     }
 }

@@ -6,30 +6,50 @@
 //
 
 import Foundation
+import RegexBuilder
 
 class ElfCode {
+    static let regex = Regex {
+        Capture {
+            One(.word)
+            One(.word)
+            One(.word)
+        }
+        " "
+        Capture {
+            OneOrMore(.word)
+        }
+        Optionally {
+            " "
+            Capture {
+                Optionally {
+                    "-"
+                }
+                OneOrMore(.word)
+            }
+        }
+    }
+    
     enum Instruction {
-        case half(Substring), triple(Substring), increment(Substring), jump(Int), jumpEven(Substring, Int), jumpOne(Substring, Int)
+        case copy(Substring, Substring), increment(Substring), decrement(Substring), jumpNonZero(Substring, Int)
         
         init(_ input: String) {
-            guard let match = input.wholeMatch(of: /(\w+) (([^+-])|([+-]\d+))(, ([+-]\d+))?/)?.output else {
+            guard let match = input.wholeMatch(of: regex)?.output else {
                 fatalError("Unknown instruction: \(input)")
             }
             let instruction = match.1
             switch instruction {
-            case "hlf": self = .half(match.2)
-            case "tpl": self = .triple(match.2)
+            case "cpy": self = .copy(match.2, match.3!)
             case "inc": self = .increment(match.2)
-            case "jmp": self = .jump(Int(match.2)!)
-            case "jie": self = .jumpEven(match.2, Int(match.6!)!)
-            case "jio": self = .jumpOne(match.2, Int(match.6!)!)
+            case "dec": self = .decrement(match.2)
+            case "jnz": self = .jumpNonZero(match.2, Int(match.3!)!)
             default:
                 fatalError("Unknown instruction: \(input)")
             }
         }
     }
     
-    var registers: [Substring: Int] = ["a": 1, "b": 0]
+    var registers: [Substring: Int] = ["a": 1, "b": 0, "c": 0, "d": 0]
     let instructions: [Instruction]
     var instructionPointer = 0
     
@@ -37,27 +57,26 @@ class ElfCode {
         instructions = lines.map(Instruction.init)
     }
     
-    func run() {
+    func run() -> Int {
         while step() {}
+        return registers["a"]!
     }
     
     func step() -> Bool {
         let instruction = instructions[instructionPointer]
         switch instruction {
-        case let .half(register):
-            registers[register]! /= 2
-        case let .triple(register):
-            registers[register]! *= 3
+        case let .copy(lhs, rhs):
+            if let number = Int(lhs) {
+                registers[rhs] = number
+            } else {
+                registers[rhs] = registers[lhs]!
+            }
         case let .increment(register):
             registers[register]! += 1
-        case let .jump(value):
-            instructionPointer += value - 1
-        case let .jumpEven(register, value):
-            if registers[register]! % 2 == 0 {
-                instructionPointer += value - 1
-            }
-        case let .jumpOne(register, value):
-            if registers[register]! == 1 {
+        case let .decrement(register):
+            registers[register]! -= 1
+        case let .jumpNonZero(register, value):
+            if (Int(register) ?? registers[register])! != 0 {
                 instructionPointer += value - 1
             }
         }
