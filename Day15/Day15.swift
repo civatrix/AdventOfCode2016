@@ -19,10 +19,11 @@ final class Day15: Day {
         "."
     }
     func run(input: String) -> String {
-        let discs = input.lines.map {
+        var discs = input.lines.map {
             let match = $0.wholeMatch(of: regex)!
             return (size: match.1, start: match.2)
         }
+        discs.append((size: 11, start: 0))
         
         var time = 0
         while true {
