@@ -19,7 +19,7 @@ final class Day14: Day {
         var index = 0
         while keys.count < 64 {
             possibleKeys = possibleKeys.filter { $0.1 + 1000 >= index }
-            let key = Crypto.Insecure.MD5.hash(data: "\(input)\(index)".data(using: .utf8)!).description.split(separator: " ").last!
+            let key = hash(of: "\(input)\(index)")
             for match in key.matches(of: quintuple) {
                 let foundCharacter = match.output.1.first!
                 possibleKeys = possibleKeys.filter {
@@ -40,5 +40,14 @@ final class Day14: Day {
         }
         
         return keys.sorted().prefix(64).last!.description
+    }
+    
+    func hash(of: String) -> Substring {
+        var lastHash = Substring(of)
+        for _ in 0 ..< 2017 {
+            lastHash = Crypto.Insecure.MD5.hash(data: lastHash.data(using: .utf8)!).description.split(separator: " ").last!
+        }
+        
+        return lastHash
     }
 }
