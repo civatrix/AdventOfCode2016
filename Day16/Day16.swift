@@ -8,7 +8,7 @@
 import Foundation
 
 final class Day16: Day {
-    var diskSize = 272
+    var diskSize = 35651584
     
     func run(input: String) -> String {
         var data = input
