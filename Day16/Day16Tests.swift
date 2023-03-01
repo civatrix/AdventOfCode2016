@@ -11,9 +11,11 @@ final class Day16Tests: XCTestCase {
     let day = Day16()
     
     func testDay() throws {
+        day.diskSize = 20
         let input =
 """
+10000
 """
-        XCTAssertEqual(day.run(input: input), "")
+        XCTAssertEqual(day.run(input: input), "01100")
     }
 }
