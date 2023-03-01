@@ -15,7 +15,7 @@ final class Day17Tests: XCTestCase {
 """
 ihgpwlah
 """
-        XCTAssertEqual(day.run(input: input), "DDRRRD")
+        XCTAssertEqual(day.run(input: input), "370")
     }
     
     func testDay2() throws {
@@ -23,7 +23,7 @@ ihgpwlah
 """
 kglvqrro
 """
-        XCTAssertEqual(day.run(input: input), "DDUDRLRRUDRD")
+        XCTAssertEqual(day.run(input: input), "492")
     }
     
     func testDay3() throws {
@@ -31,6 +31,6 @@ kglvqrro
 """
 ulqzkmiv
 """
-        XCTAssertEqual(day.run(input: input), "DRURDRUDDLLDLUURRDULRLDUUDDDRR")
+        XCTAssertEqual(day.run(input: input), "830")
     }
 }

@@ -10,7 +10,7 @@ import Crypto
 
 final class Day17: Day {
     func run(input: String) -> String {
-        return findPath(hash: input, path: "", position: .zero).sorted { $0.count < $1.count }[0]
+        return findPath(hash: input, path: "", position: .zero).sorted { $0.count > $1.count }[0].count.description
     }
     
     func findPath(hash: String, path: String, position: Point) -> [String] {
