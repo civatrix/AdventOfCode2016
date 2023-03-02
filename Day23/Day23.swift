@@ -10,7 +10,7 @@ import Foundation
 final class Day23: Day {
     func run(input: String) -> String {
         let elfCode = ElfCode(input.lines)
-        elfCode.registers["a"] = 7
+        elfCode.registers["a"] = 12
         return elfCode.run().description
     }
 }
