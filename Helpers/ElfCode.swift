@@ -34,7 +34,7 @@ class ElfCode {
     }
     
     enum Instruction {
-        case copy(Substring, Substring), increment(Substring), decrement(Substring), jumpNonZero(Substring, Substring), toggle(Substring)
+        case copy(Substring, Substring), increment(Substring), decrement(Substring), jumpNonZero(Substring, Substring), toggle(Substring), output(Substring)
         
         init(_ input: String) {
             guard let match = input.wholeMatch(of: regex)?.output else {
@@ -47,6 +47,7 @@ class ElfCode {
             case "dec": self = .decrement(match.2)
             case "jnz": self = .jumpNonZero(match.2, match.3!)
             case "tgl": self = .toggle(match.2)
+            case "out": self = .output(match.2)
             default:
                 fatalError("Unknown instruction: \(input)")
             }
@@ -56,6 +57,7 @@ class ElfCode {
     var registers: [Substring: Int] = ["a": 1, "b": 0, "c": 0, "d": 0]
     var instructions: [Instruction]
     var instructionPointer = 0
+    var output = ""
     
     init(_ lines: [String]) {
         instructions = lines.map(Instruction.init)
@@ -97,7 +99,11 @@ class ElfCode {
                 instructions[instructionPointer + offset] = .copy(lhs, rhs)
             case let .toggle(rhs):
                 instructions[instructionPointer + offset] = .increment(rhs)
+            case let .output(rhs):
+                instructions[instructionPointer + offset] = .increment(rhs)
             }
+            case let .output(register):
+            output += "\((Int(register) ?? registers[register])!)"
         }
         
         instructionPointer += 1
