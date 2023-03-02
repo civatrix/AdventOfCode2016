@@ -11,7 +11,7 @@ final class Day21Tests: XCTestCase {
     let day = Day21()
     
     func testDayFull() throws {
-        day.startingPassword = "abcde"
+        day.startingPassword = "decab"
         let input =
 """
 swap position 4 with position 0
@@ -22,79 +22,79 @@ move position 1 to position 4
 move position 3 to position 0
 rotate based on position of letter b
 rotate based on position of letter d
-"""
-        XCTAssertEqual(day.run(input: input), "decab")
-    }
-    
-    func testDay1() throws {
-        day.startingPassword = "abcde"
-        let input =
-"""
-swap position 4 with position 0
-"""
-        XCTAssertEqual(day.run(input: input), "ebcda")
-    }
-    
-    func testDay2() throws {
-        day.startingPassword = "ebcda"
-        let input =
-"""
-swap letter d with letter b
-"""
-        XCTAssertEqual(day.run(input: input), "edcba")
-    }
-    
-    func testDay3() throws {
-        day.startingPassword = "edcba"
-        let input =
-"""
-reverse positions 0 through 4
 """
         XCTAssertEqual(day.run(input: input), "abcde")
     }
     
-    func testDay4() throws {
+    func testDay1() throws {
+        day.startingPassword = "ebcda"
+        let input =
+"""
+swap position 4 with position 0
+"""
+        XCTAssertEqual(day.run(input: input), "abcde")
+    }
+    
+    func testDay2() throws {
+        day.startingPassword = "edcba"
+        let input =
+"""
+swap letter d with letter b
+"""
+        XCTAssertEqual(day.run(input: input), "ebcda")
+    }
+    
+    func testDay3() throws {
         day.startingPassword = "abcde"
+        let input =
+"""
+reverse positions 0 through 4
+"""
+        XCTAssertEqual(day.run(input: input), "edcba")
+    }
+    
+    func testDay4() throws {
+        day.startingPassword = "bcdea"
         let input =
 """
 rotate left 1 step
 """
-        XCTAssertEqual(day.run(input: input), "bcdea")
+        XCTAssertEqual(day.run(input: input), "abcde")
     }
     
     func testDay5() throws {
-        day.startingPassword = "bcdea"
+        day.startingPassword = "bdeac"
         let input =
 """
 move position 1 to position 4
 """
-        XCTAssertEqual(day.run(input: input), "bdeac")
+        XCTAssertEqual(day.run(input: input), "bcdea")
     }
     
     func testDay6() throws {
-        day.startingPassword = "bdeac"
+        day.startingPassword = "abdec"
         let input =
 """
 move position 3 to position 0
 """
-        XCTAssertEqual(day.run(input: input), "abdec")
+        XCTAssertEqual(day.run(input: input), "bdeac")
     }
     
     func testDay7() throws {
-        day.startingPassword = "abdec"
+        day.startingPassword = "ecabd"
         let input =
 """
 rotate based on position of letter b
 """
-        XCTAssertEqual(day.run(input: input), "ecabd")
+        XCTAssertEqual(day.run(input: input), "abdec")
     }
     
     func testDay8() throws {
-        day.startingPassword = "ecabd"
+        day.startingPassword = "decab"
         let input =
 """
 rotate based on position of letter d
 """
-        XCTAssertEqual(day.run(input: input), "decab")
+        XCTAssertEqual(day.run(input: input), "ecabd")
     }
 }

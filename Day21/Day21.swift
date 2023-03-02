@@ -8,7 +8,7 @@
 import Foundation
 
 final class Day21: Day {
-    var startingPassword = "abcdefgh"
+    var startingPassword = "fbgdceah"
     
     let swapPosition = /swap position (.) with position (.)/
     let swapLetter = /swap letter (.) with letter (.)/
@@ -18,7 +18,17 @@ final class Day21: Day {
     let move = /move position (.) to position (.)/
     
     func run(input: String) -> String {
-        var password = startingPassword.map { $0 }
+        for permutation in startingPassword.map({ $0 }).permutations() {
+            if scramble(start: permutation, input: input) == startingPassword {
+                return String(permutation)
+            }
+        }
+        
+        fatalError("No match found")
+    }
+    
+    func scramble(start: [Character], input: String) -> String {
+        var password = start
         for line in input.lines {
             if let match = line.wholeMatch(of: swapPosition)?.output {
                 let from = Int(match.1)!
