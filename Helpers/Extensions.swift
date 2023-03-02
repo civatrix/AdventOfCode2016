@@ -23,12 +23,14 @@ extension StringProtocol {
     }
 }
 
-extension Array {
-    subscript(wrapped wrapped: Int) -> Element {
+extension Collection where Index == Int {
+    subscript(wrapped wrapped: Index) -> Element {
         self[wrapped % count]
     }
-    
-    subscript(safe index: Int) -> Element? {
+}
+
+extension Collection {
+    subscript(safe index: Index) -> Element? {
         guard index < endIndex && index >= startIndex else { return nil }
         return self[index]
     }
