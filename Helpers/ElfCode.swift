@@ -17,6 +17,9 @@ class ElfCode {
         }
         " "
         Capture {
+            Optionally {
+                "-"
+            }
             OneOrMore(.word)
         }
         Optionally {
@@ -31,7 +34,7 @@ class ElfCode {
     }
     
     enum Instruction {
-        case copy(Substring, Substring), increment(Substring), decrement(Substring), jumpNonZero(Substring, Int)
+        case copy(Substring, Substring), increment(Substring), decrement(Substring), jumpNonZero(Substring, Substring), toggle(Substring)
         
         init(_ input: String) {
             guard let match = input.wholeMatch(of: regex)?.output else {
@@ -42,7 +45,8 @@ class ElfCode {
             case "cpy": self = .copy(match.2, match.3!)
             case "inc": self = .increment(match.2)
             case "dec": self = .decrement(match.2)
-            case "jnz": self = .jumpNonZero(match.2, Int(match.3!)!)
+            case "jnz": self = .jumpNonZero(match.2, match.3!)
+            case "tgl": self = .toggle(match.2)
             default:
                 fatalError("Unknown instruction: \(input)")
             }
@@ -50,7 +54,7 @@ class ElfCode {
     }
     
     var registers: [Substring: Int] = ["a": 1, "b": 0, "c": 0, "d": 0]
-    let instructions: [Instruction]
+    var instructions: [Instruction]
     var instructionPointer = 0
     
     init(_ lines: [String]) {
@@ -76,8 +80,23 @@ class ElfCode {
         case let .decrement(register):
             registers[register]! -= 1
         case let .jumpNonZero(register, value):
-            if (Int(register) ?? registers[register])! != 0 {
-                instructionPointer += value - 1
+            if (Int(register) ?? registers[register])! != 0, let offset = Int(value) ?? registers[value] {
+                instructionPointer += offset - 1
+            }
+        case let .toggle(register):
+            let offset = registers[register]!
+            guard let target = instructions[safe: instructionPointer + offset] else { break }
+            switch target {
+            case let .copy(lhs, rhs):
+                instructions[instructionPointer + offset] = .jumpNonZero(lhs, rhs)
+            case let .increment(rhs):
+                instructions[instructionPointer + offset] = .decrement(rhs)
+            case let .decrement(rhs):
+                instructions[instructionPointer + offset] = .increment(rhs)
+            case let .jumpNonZero(lhs, rhs):
+                instructions[instructionPointer + offset] = .copy(lhs, rhs)
+            case let .toggle(rhs):
+                instructions[instructionPointer + offset] = .increment(rhs)
             }
         }
         
