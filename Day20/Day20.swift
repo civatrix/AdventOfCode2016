@@ -9,6 +9,16 @@ import Foundation
 
 final class Day20: Day {
     func run(input: String) -> String {
-        return ""
+        let ranges = input.lines.map { line in
+            let lhs = Int(line.split(separator: "-")[0])!
+            let rhs = Int(line.split(separator: "-")[1])!
+            return lhs ... rhs
+        }
+        var minimumAddress = 0
+        while let range = ranges.first(where: { $0.contains(minimumAddress) }) {
+            minimumAddress = range.upperBound + 1
+        }
+        
+        return minimumAddress.description
     }
 }

@@ -13,7 +13,10 @@ final class Day20Tests: XCTestCase {
     func testDay() throws {
         let input =
 """
+5-8
+0-2
+4-7
 """
-        XCTAssertEqual(day.run(input: input), "")
+        XCTAssertEqual(day.run(input: input), "3")
     }
 }
