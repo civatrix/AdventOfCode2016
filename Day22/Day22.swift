@@ -49,9 +49,23 @@ final class Day22: Day {
     }
     
     func run(input: String) -> String {
-        let nodes = input.lines.dropFirst(2).map(Node.init(string:))
-        let pairCount = nodes.filter { $0.used > 0 }.map { node in nodes.filter { node != $0 && $0.available >= node.used }.count }.sum
+        let nodes = input.lines.dropFirst(2).map(Node.init(string:)).sorted { $0.position < $1.position }
+        var output = ""
         
-        return pairCount.description
+        for node in nodes {
+            if node.position.x == 0 {
+                output += "\n"
+            }
+            
+            if node.used == 0 {
+                output += "_"
+            } else if node.used > 100 {
+                output += "#"
+            } else {
+                output += "."
+            }
+        }
+        
+        return output
     }
 }
