@@ -8,7 +8,7 @@
 import Foundation
 
 final class Day18: Day {
-    var roomSize = 40
+    var roomSize = 400000
     
     func run(input: String) -> String {
         var row = input
