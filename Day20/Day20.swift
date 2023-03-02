@@ -15,10 +15,20 @@ final class Day20: Day {
             return lhs ... rhs
         }
         var minimumAddress = 0
-        while let range = ranges.first(where: { $0.contains(minimumAddress) }) {
-            minimumAddress = range.upperBound + 1
+        var validAddresses = 0
+        
+        while true {
+            while let range = ranges.first(where: { $0.contains(minimumAddress) }) {
+                minimumAddress = range.upperBound + 1
+            }
+            
+            if minimumAddress > UInt32.max {
+                break
+            }
+            validAddresses += 1
+            minimumAddress += 1
         }
         
-        return minimumAddress.description
+        return validAddresses.description
     }
 }
