@@ -36,6 +36,7 @@ final class Day24: Day {
         var shortestRoute = Int.max
         for var route in targets.keys.permutations() {
             route.insert(0, at: 0)
+            route.append(0)
             shortestRoute = min(shortestRoute, route.adjacentPairs().map { routes[$0.0]![$0.1]! }.sum)
         }
         
