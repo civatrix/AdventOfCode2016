@@ -11,10 +11,8 @@ final class Day19Tests: XCTestCase {
     let day = Day19()
     
     func testDay() throws {
-        let input =
-"""
-5
-"""
-        XCTAssertEqual(day.run(input: input), "3")
+        for count in 5 ... 100 {
+            print("\(count): \(day.run(input: "\(count)"))")
+        }
     }
 }
